@@ -20,26 +20,12 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: [ubuntu-latest]
     strategy:
       fail-fast: false
-      matrix:
-        language: [ 'csharp' ]
-        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
-        # Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
-        # language: [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
-
-    steps:
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v2
-        with:
-          languages: ${{ matrix.language }}
-          config-file: ./.github/codeql/codeql-config.yml
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v2
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
-
+    secrets: inherit
+    uses: pcs-security/actions-template/.github/workflows/codeql-template.yaml@v2
+    with:
+      self-hosted: false
+      runner-labels: '[{"label": "ubuntu-latest"}]'
+      languages-torun: '[{"language": "csharp"}]'
     
