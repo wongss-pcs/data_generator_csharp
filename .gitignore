@@ -1,0 +1,9 @@
+/** C# **/
+bin
+obj
+test/bin/*
+test/obj/*
+
+
+/** javascript **/
+src/node_modules/*
