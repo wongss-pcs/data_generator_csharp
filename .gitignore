@@ -1,3 +1,7 @@
+/** IOS files **/
+.DS_Store
+**/.DS_Store
+
 /** C# **/
 bin
 obj
